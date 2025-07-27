@@ -1,0 +1,34 @@
+3 3
+2
+CUS-0001
+John
+john23
+1
+ACC-NO-00001 480000
+3
+Deposit
+500000
+2025-07-27 18:25:51
+
+Withdrawal
+20000
+2025-07-27 18:26:38
+
+Transfer Out
+20000
+2025-07-27 18:26:38
+To Acc: ACC-NO-00002
+CUS-0002
+susan
+susan24
+1
+ACC-NO-00002 20000
+2
+Deposit
+20000
+2025-07-27 18:26:38
+
+Transfer In
+20000
+2025-07-27 18:26:38
+From Acc: ACC-NO-00001
