@@ -1,34 +1,47 @@
-3 3
-2
-CUS-0001
-John
-john23
-1
-ACC-NO-00001 480000
-3
-Deposit
-500000
-2025-07-27 18:25:51
+NEXT_IDS: CUS=3 ACC=3
+TOTAL_CUSTOMERS: 2
 
-Withdrawal
-20000
-2025-07-27 18:26:38
+CUSTOMER: CUS-0001
+NAME: Tayyab
+PASSWORD: 12345
+ACCOUNTS: 1
 
-Transfer Out
-20000
-2025-07-27 18:26:38
-To Acc: ACC-NO-00002
-CUS-0002
-susan
-susan24
-1
-ACC-NO-00002 20000
-2
-Deposit
-20000
-2025-07-27 18:26:38
+  ACCOUNT: ACC-NO-00001
+  BALANCE: 20000
+  TRANSACTIONS: 4
+    TYPE: Deposit
+    AMOUNT: 50000
+    DATE: 2025-08-18 15:04:54
+    DETAILS: -
+    TYPE: Withdrawal
+    AMOUNT: 10000
+    DATE: 2025-08-18 15:05:02
+    DETAILS: -
+    TYPE: Withdrawal
+    AMOUNT: 20000
+    DATE: 2025-08-18 15:05:23
+    DETAILS: -
+    TYPE: Transfer Out
+    AMOUNT: 20000
+    DATE: 2025-08-18 15:05:23
+    DETAILS: To Acc: ACC-NO-00002
 
-Transfer In
-20000
-2025-07-27 18:26:38
-From Acc: ACC-NO-00001
+----------------------------------------
+CUSTOMER: CUS-0002
+NAME: John
+PASSWORD: 54321
+ACCOUNTS: 1
+
+  ACCOUNT: ACC-NO-00002
+  BALANCE: 20000
+  TRANSACTIONS: 2
+    TYPE: Deposit
+    AMOUNT: 20000
+    DATE: 2025-08-18 15:05:23
+    DETAILS: -
+    TYPE: Transfer In
+    AMOUNT: 20000
+    DATE: 2025-08-18 15:05:23
+    DETAILS: From Acc: ACC-NO-00001
+
+----------------------------------------
