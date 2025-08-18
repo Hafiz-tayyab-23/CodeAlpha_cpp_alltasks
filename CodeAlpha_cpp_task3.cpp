@@ -112,76 +112,112 @@ vector<Customer> customers;
 int nextCustomerCounter = 1;
 int nextAccountCounter = 1;
 
-// Save all customer and account data to a file for persistence
-void saveData()
-{
+// Save all customer and account data to a formatted file
+void saveData() {
     ofstream fout("bank_data.txt");
-    fout << nextCustomerCounter << ' ' << nextAccountCounter << '\n';
-    fout << customers.size() << '\n';
-    for (const auto &cust : customers)
-    {
-        fout << cust.customerId << '\n'
-             << cust.name << '\n'
-             << cust.password << '\n';
-        fout << cust.accounts.size() << '\n';
-        for (const auto &acc : cust.accounts)
-        {
-            fout << acc.accountNumber << ' ' << acc.balance << '\n';
-            fout << acc.transactions.size() << '\n';
-            for (const auto &t : acc.transactions)
-            {
-                fout << t.type << '\n'
-                     << t.amount << '\n'
-                     << t.date << '\n'
-                     << t.details << '\n';
+
+    fout << "NEXT_IDS: CUS=" << nextCustomerCounter
+         << " ACC=" << nextAccountCounter << "\n";
+    fout << "TOTAL_CUSTOMERS: " << customers.size() << "\n\n";
+
+    for (const auto &cust : customers) {
+        fout << "CUSTOMER: " << cust.customerId << "\n";
+        fout << "NAME: " << cust.name << "\n";
+        fout << "PASSWORD: " << cust.password << "\n";
+        fout << "ACCOUNTS: " << cust.accounts.size() << "\n\n";
+
+        for (const auto &acc : cust.accounts) {
+            fout << "  ACCOUNT: " << acc.accountNumber << "\n";
+            fout << "  BALANCE: " << acc.balance << "\n";
+            fout << "  TRANSACTIONS: " << acc.transactions.size() << "\n";
+            for (const auto &t : acc.transactions) {
+                fout << "    TYPE: " << t.type << "\n";
+                fout << "    AMOUNT: " << t.amount << "\n";
+                fout << "    DATE: " << t.date << "\n";
+                fout << "    DETAILS: " 
+                     << (t.details.empty() ? "-" : t.details) << "\n";
             }
+            fout << "\n";
         }
+        fout << "----------------------------------------\n";
     }
     fout.close();
 }
 
-// Load all customer and account data from the file
-void loadData()
-{
+// Load all customer and account data from formatted file
+void loadData() {
     ifstream fin("bank_data.txt");
-    if (!fin)
-        return;
-    size_t nCustomers, nAccounts, nTrans;
-    fin >> nextCustomerCounter >> nextAccountCounter;
-    fin >> nCustomers;
-    string dummy;
-    getline(fin, dummy); // consume newline
-    for (size_t i = 0; i < nCustomers; ++i)
-    {
+    if (!fin) return;
+
+    customers.clear();
+    string line;
+
+    // Read NEXT_IDS
+    getline(fin, line);
+    sscanf(line.c_str(), "NEXT_IDS: CUS=%d ACC=%d", &nextCustomerCounter, &nextAccountCounter);
+
+    // Read TOTAL_CUSTOMERS
+    int nCustomers;
+    getline(fin, line);
+    sscanf(line.c_str(), "TOTAL_CUSTOMERS: %d", &nCustomers);
+
+    getline(fin, line); // consume empty line
+
+    for (int i = 0; i < nCustomers; i++) {
         string cid, name, password;
-        getline(fin, cid);
-        getline(fin, name);
-        getline(fin, password);
+        int nAccounts;
+
+        getline(fin, line); // CUSTOMER
+        cid = line.substr(line.find(":") + 2);
+
+        getline(fin, line); // NAME
+        name = line.substr(line.find(":") + 2);
+
+        getline(fin, line); // PASSWORD
+        password = line.substr(line.find(":") + 2);
+
+        getline(fin, line); // ACCOUNTS
+        sscanf(line.c_str(), "ACCOUNTS: %d", &nAccounts);
+
         customers.emplace_back(name, cid, password);
-        fin >> nAccounts;
-        getline(fin, dummy);
-        for (size_t j = 0; j < nAccounts; ++j)
-        {
+
+        getline(fin, line); // empty line
+
+        for (int j = 0; j < nAccounts; j++) {
             string accNo;
             double bal;
-            fin >> accNo >> bal;
+            int nTrans;
+
+            getline(fin, line); // ACCOUNT
+            accNo = line.substr(line.find(":") + 2);
+
+            getline(fin, line); // BALANCE
+            sscanf(line.c_str(), "  BALANCE: %lf", &bal);
+
             customers.back().accounts.emplace_back(accNo);
             customers.back().accounts.back().balance = bal;
-            fin >> nTrans;
-            getline(fin, dummy);
-            for (size_t k = 0; k < nTrans; ++k)
-            {
+
+            getline(fin, line); // TRANSACTIONS
+            sscanf(line.c_str(), "  TRANSACTIONS: %d", &nTrans);
+
+            for (int k = 0; k < nTrans; k++) {
                 string type, date, details;
                 double amt;
-                getline(fin, type);
-                fin >> amt;
-                getline(fin, dummy);
-                getline(fin, date);
-                getline(fin, details);
+
+                getline(fin, line); type = line.substr(line.find(":") + 2); // TYPE
+                getline(fin, line); sscanf(line.c_str(), "    AMOUNT: %lf", &amt); // AMOUNT
+                getline(fin, line); date = line.substr(line.find(":") + 2); // DATE
+                getline(fin, line); details = line.substr(line.find(":") + 2); // DETAILS
+
+                if (details == "-") details = "";
+
                 customers.back().accounts.back().transactions.emplace_back(type, amt, date, details);
             }
+            getline(fin, line); // consume empty line
         }
+        getline(fin, line); // consume separator line "----"
     }
+
     fin.close();
 }
 
