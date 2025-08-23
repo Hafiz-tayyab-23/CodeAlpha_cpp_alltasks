@@ -15,6 +15,8 @@ Implemented user authentication with registration, login validation, and file-ba
 Task 3 – Banking System 💳<br>
 Created a file-based banking application with account creation, deposits, withdrawals, and balance inquiry.
 
+---
+
 🛠️ Tech Stack<br>
 Language: C++<br>
 
