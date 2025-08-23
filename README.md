@@ -5,22 +5,22 @@ The projects highlight **file handling, object-oriented programming, and CLI-bas
 
 ---
 
-📝 Tasks Overview
-Task 1 – CGPA Calculator 🎓
-A program to calculate CGPA from student grades, applying weighted averages.
+📝 Tasks Overview<br>
+Task 1 – CGPA Calculator 🎓<br>
+A program to calculate CGPA from student grades, applying weighted averages.<br>
 
-Task 2 – Login & Registration System 🔐
-Implemented user authentication with registration, login validation, and file-based credential storage.
+Task 2 – Login & Registration System 🔐<br>
+Implemented user authentication with registration, login validation, and file-based credential storage.<br>
 
-Task 3 – Banking System 💳
+Task 3 – Banking System 💳<br>
 Created a file-based banking application with account creation, deposits, withdrawals, and balance inquiry.
 
 🛠️ Tech Stack
-Language: C++
+Language: C++<br>
 
-Core Concepts: File Handling, OOP, Modular Design, Arrays
+Core Concepts: File Handling, OOP, Modular Design, Arrays<br>
 
-Tools: Git, GitHub, CLI
+Tools: Git, GitHub, CLI<br>
 
 ---
 
