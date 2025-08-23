@@ -5,17 +5,17 @@ The projects highlight **file handling, object-oriented programming, and CLI-bas
 
 ---
 
-📝 Tasks Overview
-Task 1 – CGPA Calculator 🎓
-A program to calculate CGPA from student grades, applying weighted averages.
+📝 Tasks Overview<br>
+Task 1 – CGPA Calculator 🎓<br>
+A program to calculate CGPA from student grades, applying weighted averages.<br>
 
-Task 2 – Login & Registration System 🔐
-Implemented user authentication with registration, login validation, and file-based credential storage.
+Task 2 – Login & Registration System 🔐<br>
+Implemented user authentication with registration, login validation, and file-based credential storage.<br>
 
-Task 3 – Banking System 💳
-Created a file-based banking application with account creation, deposits, withdrawals, and balance inquiry.
+Task 3 – Banking System 💳<br>
+Created a file-based banking application with account creation, deposits, withdrawals, and balance inquiry.<br>
 
-🛠️ Tech Stack
+🛠️ Tech Stack<br>
 Language: C++
 
 Core Concepts: File Handling, OOP, Modular Design, Arrays
@@ -29,8 +29,8 @@ Tools: Git, GitHub, CLI
 ```bash
 CodeAlpha_cpp_alltasks/
 │
-├── CGPA_Calculator.cpp             # Task 1: CGPA Calculator
-├── Login_Registration_System.cpp   # Task 2: Login and Registration System
-├── Banking_System.cpp              # Task 3: Banking System
+├── CodeAlpha_cpp_task1.cpp     # Task 1: CGPA Calculator
+├── CodeAlpha_cpp_task2.cpp     # Task 2: Login and Registration System
+├── CodeAlpha_cpp_task3.cpp     # Task 3: Banking System
 │
-└── README.md                       # Internship description
+└── README.md                   # Internship description
